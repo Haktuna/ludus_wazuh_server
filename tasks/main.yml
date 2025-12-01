@@ -81,7 +81,7 @@
   when: not wazuh_installed.stat.exists
 
 - name: Run SOCFORTRESS Wazuh rules script
-  shell: bash /tmp/wazuh_socfortress_rules.sh
+  shell: bash /tmp/wazuh_socfortress_rules.sh -y
   when: not wazuh_installed.stat.exists
 
 - name: Extract dashboard credentials
