@@ -73,11 +73,11 @@
   until: dashboard_response.status == 200
   when: dashboard_service.stat.exists
 
-- name: Copy SOCFORTRESS rules script
-  copy:
-    src: wazuh_socfortress_rules.sh
+- name: Download SOCFORTRESS rules script
+  get_url:
+    url: "{{ socfortress_rules_script_url }}"
     dest: /tmp/wazuh_socfortress_rules.sh
-    mode: "0755"
+    mode: '0755'
   when: not wazuh_installed.stat.exists
 
 - name: Run SOCFORTRESS Wazuh rules script
